@@ -56,7 +56,7 @@ class Content_Snippets_Widget extends WP_Widget {
 
     // Gets the selected snippet
     $snippet = get_post( $instance['snippet_id'] );
-    $content = $snippet->post_content;
+    $content = apply_filters( 'the_content', $snippet->post_content );,
 
     echo '<div class="content-snippet-entry">';
 
@@ -102,7 +102,7 @@ class Content_Snippets_Widget extends WP_Widget {
     <p>
       <label for="<?php echo $this->get_field_id( 'snippet_id' ); ?>"><?php _e( 'Content Snippet', 'content-snippets' ); ?>: </label>
 
-      <?php $snippets = get_posts( array( 'post_type' => 'snippet', 'posts_per_page' => -1 ) ); ?>
+      <?php $snippets = get_posts( array( 'post_type' => 'snippet', 'posts_per_page' => -1, 'order' => 'ASC', 'orderby' => 'title' ) ); ?>
 
       <select name="<?php echo $this->get_field_name( 'snippet_id' ); ?>" id="<?php echo $this->get_field_id( 'snippet_id' ); ?>">
         
