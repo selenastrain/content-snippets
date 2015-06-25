@@ -56,7 +56,7 @@ class Content_Snippets_Widget extends WP_Widget {
 
     // Gets the selected snippet
     $snippet = get_post( $instance['snippet_id'] );
-    $content = apply_filters( 'the_content', $snippet->post_content );,
+    $content = apply_filters( 'the_content', $snippet->post_content );
 
     echo '<div class="content-snippet-entry">';
 
